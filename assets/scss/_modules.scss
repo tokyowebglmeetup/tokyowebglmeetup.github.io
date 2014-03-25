@@ -1,0 +1,270 @@
+
+/* ==========================================================================
+   Section comment block
+   ========================================================================== */
+
+/* Sub-section comment block
+   ========================================================================== */
+
+/* Basic comment */
+
+/* ==========================================================================
+   vars
+   ========================================================================== */
+@import url(http://fonts.googleapis.com/css?family=Audiowide);
+
+$NS: '.tokyo';
+$baseFontSize: 18px;
+
+$fontSansSerif : '\30D2\30E9\30AE\30CE\89D2\30B4\20\50\72\6F\20\57\33','Hiragino Kaku Gothic Pro','\30E1\30A4\30EA\30AA',Meiryo,'\FF2D\FF33\20\FF30\30B4\30B7\30C3\30AF',sans-serif;
+$contentWidth: 1024px;
+$blockMargin1: 80px;
+$blockMargin2: 40px;
+
+@mixin clearfix () {
+  *zoom: 1;
+  &:before,
+  &:after {
+    content: "";
+    display: table; }
+  &:after {clear: both;}
+}
+
+/* ==========================================================================
+   general
+   ========================================================================== */
+html{
+  font-size: $baseFontSize;
+  font-family: $fontSansSerif;
+  line-height: 1.6;
+  background: #F6F6F6;
+}
+body{
+}
+a{
+  color: #00B4DD;
+}
+.tokyo--alignCenter{
+  text-align: center;
+}
+
+/* ==========================================================================
+   pageHeader
+   ========================================================================== */
+// #{$NS}-pageHeader{
+.tokyo-pageHeader{
+  position: relative;
+  min-width: $contentWidth;
+  height: 250px;
+  overflow: hidden;
+  background: #000;
+}
+.tokyo-pageHeader__logo{
+  img,
+  canvas{
+    display: block;
+    margin: 0 auto;
+  }
+}
+.tokyo-pageHeader__info{
+  color: #FFF;
+  text-align: right;
+  position: absolute;
+  left:50%;
+  bottom:0;
+  width: $contentWidth;
+  margin-left:$contentWidth / -2;
+}
+
+
+/* ==========================================================================
+   nav
+   ========================================================================== */
+.tokyo-pageNav{
+  min-width: $contentWidth;
+  border-top: 4px solid #00C4DD;
+  border-bottom: 1px solid #00C4DD;
+  box-shadow: 0 4px 4px rgba( 0, 0, 0, .2 );
+  background: #fff;
+  ul{
+    font-size: 18px;
+    list-style: none;
+    display: table;
+    width: $contentWidth;
+    padding: 0;
+    background: url( ../img/pageNav/bg_01.png ) no-repeat 50% 0;
+    margin: -4px auto 0;
+  }
+  li{
+    font-family: 'Audiowide', cursive;
+    text-align: center;
+    display: table-cell;
+    padding: 16px 0 12px;
+  }
+  a, a:hover{
+    color: #000;
+    text-decoration: none;
+    display: block;
+    padding: 16px 0 12px;
+    margin: -16px 0 -12px;
+  }
+}
+
+/* ==========================================================================
+   section
+   ========================================================================== */
+.tokyo-section{
+  width: $contentWidth - 144;
+  padding: 0 72px;
+  margin: $blockMargin1 auto;
+}
+.tokyo-section__header{
+  margin: 0 0 $blockMargin2 -72px;
+  display: table;
+  h1{
+    font-size: 36px;
+    font-family: 'Audiowide', cursive;
+    position: relative;
+    padding-bottom: 6px;
+    margin: 0;
+    &:after{
+      content: '';
+      position: absolute;
+      right: 0;
+      left:0;
+      bottom:0;
+      display: block;
+      height: 6px;
+      border-radius:3px;
+      background: #00DBFE;
+    }
+  }
+}
+.tokyo-section__image{
+  margin: 30px -72px;
+  img, iframe{
+    display: block;
+  }
+}
+/* ==========================================================================
+   speakers
+   ========================================================================== */
+.tokyo-speakers{
+  font-size: 0;
+  margin: 20px -72px;
+  text-align: center;
+}
+.tokyo-speakers__item{
+  font-size: $baseFontSize;
+  text-align: left;
+  vertical-align: top;
+  display: inline-block;
+  width: 200px;
+  margin: 0 60px;
+  & > a,
+  & > a:hover{
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+}
+.tokyo-speakers__avator{
+  width: 190px;
+  border:5px solid #00DBFE;
+  border-radius: 95px;
+  img{
+    display: block;
+    border-radius: 95px;
+  }
+}
+.tokyo-speakers__name{
+  font-weight: bold;
+  text-align: center;
+  margin: 1em 0;
+}
+.tokyo-speakers__links{
+  color: #00DBFE;
+  ul{
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+/* ==========================================================================
+   scheduleTable
+   ========================================================================== */
+.tokyo-scheduleTable{
+  margin: $blockMargin2 0;
+  table{
+    width: 100%;
+  }
+  tr:first-child{
+    th,td{
+      border-style: none;
+    }
+  }
+  th{
+    font-weight: normal;
+    text-align: right;
+    vertical-align: top;
+    white-space: nowrap;
+    width: 1%;
+    padding: 14px 20px 14px 0;
+  }
+  td{
+    vertical-align: top;
+    padding: 14px 0;
+    border-top: 3px dashed #A9A9A9;
+  }
+}
+.tokyo-scheduleTable__caption{
+  font-weight: bold;
+  padding: 0 0 14px;
+}
+
+/* ==========================================================================
+   logos
+   ========================================================================== */
+.tokyo-logos{
+  ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  li{
+    margin: 30px 0;
+    text-align: center;
+  }
+  a{
+    display: inline-block;
+  }
+  img{
+    display: block;
+  }
+}
+/* ==========================================================================
+   pageFooter
+   ========================================================================== */
+.tokyo-pageFooter{
+  min-width: $contentWidth;
+  background: #232323;
+}
+.tokyo-pageFooter__inner{
+  color: #FFF;
+  text-align: center;
+  width: $contentWidth;
+  margin: 160px auto 0;
+  padding: 60px 0 120px;
+}
+
+/* ==========================================================================
+   
+   ========================================================================== */
+
+/* ==========================================================================
+   
+   ========================================================================== */
+
+/* ==========================================================================
+   
+   ========================================================================== */
