@@ -10,8 +10,8 @@ module.exports = (grunt) ->
 
     uglify:
       jsSrc:
-        src: 'assets/js/header3d.js'
-        dest: 'assets/js/header3d.min.js'
+        src: 'assets/js/src/header3d.js'
+        dest: 'assets/js/src/header3d.min.js'
       font:
         src: 'assets/js/vendor/gentilis_bold.typeface.subset.js'
         dest: 'assets/js/vendor/gentilis_bold.typeface.subset.min.js'
@@ -20,8 +20,8 @@ module.exports = (grunt) ->
       libs:
         src: [
           'assets/js/vendor/three.min.js'
-          '<%= uglify.jsSrc.dest %>'
           '<%= uglify.font.dest %>'
+          '<%= uglify.jsSrc.dest %>'
         ]
         dest: 'assets/js/all.min.js'
 
