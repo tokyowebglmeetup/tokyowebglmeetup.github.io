@@ -1,5 +1,6 @@
 /*! normalize.css v2.1.1 | MIT License | git.io/normalize */
 @import url(http://fonts.googleapis.com/css?family=Audiowide);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,700);
 article,
 aside,
 details,
@@ -251,9 +252,25 @@ table {
    ========================================================================== */
 html {
   font-size: 18px;
-  font-family: "\30D2\30E9\30AE\30CE\89D2\30B4\20\50\72\6F\20\57\33", "Hiragino Kaku Gothic Pro", "\30E1\30A4\30EA\30AA", Meiryo, "\FF2D\FF33\20\FF30\30B4\30B7\30C3\30AF", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
   line-height: 1.6;
   background: #F6F6F6;
+}
+
+::-webkit-selection {
+  background: #0df;
+  color: #fff;
+}
+
+::-moz-selection {
+  background: #0df;
+  color: #fff;
+}
+
+::selection {
+  background: #0df;
+  color: #fff;
 }
 
 a {
@@ -431,6 +448,7 @@ a {
   padding: 14px 20px 14px 0;
 }
 .tokyo-scheduleTable td {
+  text-align: center;
   vertical-align: top;
   padding: 14px 0;
   border-top: 3px dashed #A9A9A9;
