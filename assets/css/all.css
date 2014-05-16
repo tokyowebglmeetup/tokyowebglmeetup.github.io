@@ -252,7 +252,7 @@ table {
    ========================================================================== */
 html {
   font-size: 18px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans", "\6E38\30B4\30B7\30C3\30AF\4F53", "Yu Gothic", YuGothic, "\30D2\30E9\30AE\30CE\89D2\30B4\20\50\72\6F\20\57\33", "Hiragino Kaku Gothic Pro", "\30E1\30A4\30EA\30AA", Meiryo, "\FF2D\FF33\20\FF30\30B4\30B7\30C3\30AF", sans-serif;
   -webkit-font-smoothing: antialiased;
   line-height: 1.6;
   background: #F6F6F6;
