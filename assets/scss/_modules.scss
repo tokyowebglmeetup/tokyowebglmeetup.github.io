@@ -215,7 +215,7 @@ a{
   }
   th{
     font-weight: normal;
-    text-align: right;
+    text-align: left;
     vertical-align: top;
     white-space: nowrap;
     width: 1%;
@@ -231,6 +231,12 @@ a{
 .tokyo-scheduleTable__caption{
   font-weight: bold;
   padding: 0 0 14px;
+}
+.tokyo-scheduleTable__title{
+  font-weight: bold;
+}
+.tokyo-scheduleTable__by{
+  font-size: 75%;
 }
 
 /* ==========================================================================
