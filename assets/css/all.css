@@ -399,8 +399,8 @@ a {
   text-align: left;
   vertical-align: top;
   display: inline-block;
-  width: 200px;
-  margin: 0 60px;
+  width: 190px;
+  margin: 0 30px;
 }
 .tokyo-speakers__item > a, .tokyo-speakers__item > a:hover {
   display: block;
@@ -409,13 +409,13 @@ a {
 }
 
 .tokyo-speakers__avator {
-  width: 190px;
+  width: 180px;
   border: 5px solid #00DBFE;
-  border-radius: 95px;
+  border-radius: 90px;
 }
 .tokyo-speakers__avator img {
   display: block;
-  border-radius: 95px;
+  border-radius: 90px;
 }
 
 .tokyo-speakers__name {
