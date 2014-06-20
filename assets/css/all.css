@@ -433,6 +433,41 @@ a {
 }
 
 /* ==========================================================================
+   tokyo-slides
+   ========================================================================== */
+.tokyo-slides {
+  *zoom: 1;
+  font-size: 0;
+  width: 900px;
+  margin: 0 -10px;
+}
+.tokyo-slides:before, .tokyo-slides:after {
+  content: "";
+  display: table;
+}
+.tokyo-slides:after {
+  clear: both;
+}
+
+.tokyo-slides__item {
+  font-size: 18px;
+  vertical-align: top;
+  display: inline-block;
+  width: 430px;
+  padding: 0 5px;
+  margin-bottom: 10px;
+}
+
+.tokyo-slides__slide {
+  display: block;
+}
+.tokyo-slides__slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ==========================================================================
    scheduleTable
    ========================================================================== */
 .tokyo-scheduleTable {

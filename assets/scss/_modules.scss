@@ -201,6 +201,31 @@ a{
 }
 
 /* ==========================================================================
+   tokyo-slides
+   ========================================================================== */
+.tokyo-slides{
+  @include clearfix();
+  font-size: 0;
+  width: 900px;
+  margin: 0 -10px;
+}
+.tokyo-slides__item{
+  font-size: $baseFontSize;
+  vertical-align: top;
+  display: inline-block;
+  width: 430px;
+  padding: 0 5px;
+  margin-bottom: 10px;
+}
+.tokyo-slides__slide{
+  display: block;
+  img{
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+/* ==========================================================================
    scheduleTable
    ========================================================================== */
 .tokyo-scheduleTable{
