@@ -217,6 +217,16 @@ p.TWM2-p--note {
   padding: 30px 0;
   background: #990000; }
 
+@media screen and (max-width: 640px) {
+  .TWM2-pageHeader__info {
+    font-size: 40px;
+    font-family: 'Oswald';
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    padding: 30px 0;
+    background: #990000; } }
+
 /* ==========================================================================
    section
    ========================================================================== */
@@ -266,6 +276,17 @@ p.TWM2-p--note {
 .TWM2-multiCol__col {
   display: table-cell; }
 
+@media screen and (max-width: 640px) {
+  .TWM2-multiCol {
+    margin: 0;
+    overflow: visible; }
+  .TWM2-multiCol__inner {
+    border-spacing: 0;
+    display: block;
+    width: auto; }
+  .TWM2-multiCol__col {
+    display: block; } }
+
 /* ==========================================================================
    buttonContainer
    ========================================================================== */
@@ -279,17 +300,29 @@ p.TWM2-p--note {
 a.TWM2-button {
   color: #fff;
   text-decoration: none;
-  padding: 16px 20px;
+  display: inline-block;
   min-width: 300px;
-  background: #900;
-  display: inline-block; }
+  padding: 16px 20px;
+  background: #900; }
   a.TWM2-button.TWM2-button--disabled {
     cursor: auto;
     background: #666; }
 
+@media screen and (max-width: 640px) {
+  a.TWM2-button {
+    display: block;
+    min-width: 0; } }
+
+/* ==========================================================================
+   .TWM2-map
+   ========================================================================== */
 .TWM2-map {
   height: 600px;
   margin: 20px 20px -30px; }
+  @media screen and (max-width: 640px) {
+    .TWM2-map {
+      margin-left: 0;
+      margin-right: 0; } }
 
 /* ==========================================================================
    TWM2-logoList
@@ -305,19 +338,20 @@ a.TWM2-button {
   vertical-align: bottom;
   display: inline-block; }
 .TWM2-logoList img {
-  display: block; }
+  display: block;
+  max-width: 100%;
+  height: auto; }
 
 /* ==========================================================================
    TWM2-pageFooter
    ========================================================================== */
 .TWM2-pageFooter {
-  min-width: 1200px;
   background: #900; }
 
 .TWM2-pageFooter__inner {
   color: #FFF;
-  width: 1200px;
-  padding: 30px 0;
+  max-width: 1160px;
+  padding: 30px 20px;
   margin: 0 auto; }
 
 /* ==========================================================================
@@ -356,3 +390,10 @@ a.TWM2-button {
 .TWM2-organizers__name {
   vertical-align: middle;
   display: table-cell; }
+
+@media screen and (max-width: 640px) {
+  .TWM2-organizers__list {
+    display: block; }
+  .TWM2-organizers__listItem {
+    display: table;
+    margin-bottom: 10px; } }
