@@ -155,11 +155,11 @@ p.TWM2-p--note{
    .TWM2-multiCol
    ========================================================================== */
 .TWM2-multiCol{
-  margin: 0 -10px;
+  margin: 0 -20px;
   overflow: hidden;
 }
 .TWM2-multiCol__inner{
-  border-spacing: 0 20px;
+  border-spacing: 20px 0;
   table-layout: fixed;
   display: table;
   width: 100%;
