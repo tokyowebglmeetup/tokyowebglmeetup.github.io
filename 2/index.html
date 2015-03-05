@@ -6,13 +6,13 @@
 <title>Tokyo WebGL Meetup #2</title>
 <meta property="og:image" content="http://tokyowebglmeetup.github.io/assets/img/pageHeader/logo.jpg">
 <link rel="canonical" href="http://tokyowebglmeetup.github.io/2/">
-<link rel="stylesheet" href="assets/css/all.min.css">
+<link rel="stylesheet" href="./assets/css/all.min.css">
 </head>
 <body>
 
 <header class="TWM2-pageHeader">
 	<div class="TWM2-pageHeader__logo">
-		<img src="assets/img/pageHeader/logo.jpg" alt="Tokyo WebGL Meetup" height="250" width="1024">
+		<img src="./assets/img/pageHeader/logo.jpg" alt="Tokyo WebGL Meetup" height="250" width="1024">
 	</div>
 	<div class="TWM2-pageHeader__info">
 		6th of Jun 2015 / Tokyo
@@ -27,11 +27,11 @@
 			<h1>CALL FOR SPEAKERS</h1>
 		</div>
 
-		<p class="TWM2-p TWM2-p--ja">スピーカー立候補者の応募フォームを開設しています。締め切りは4月30日正午(日本時間)です。Web での表現の可能性を感じるみなさまからの応募をお待ちしております。</p>
+		<p class="TWM2-p TWM2-p--ja">スピーカー立候補者の応募フォームを開設しています。締め切りは4月30日正午 (日本時間) です。Web での表現の可能性を感じるみなさまからの応募をお待ちしております。</p>
 
-		<p class="TWM2-p TWM2-p--en">The Call for Speakers form is now open until April 30th at 12:00PM JST. We are very excited to receive proposals push the boundaries of Web Graphics technologies can do.<br>Most talks should be given in Japanese but you are welcome to talk in English too.</p>
+		<p class="TWM2-p TWM2-p--en">The Call for Speakers form is now open until April 30th at 12:00PM JST. We are very excited to receive your proposal that push the boundaries of Web Graphics technologies can do.<br>Most talks should be given in Japanese but you are welcome to talk in English as well.</p>
 
-		<p class="TWM2-p TWM2-p--note">FYI: Since Toyko WebGL Meetup is just a local meetup, even if you are selected, you don't get speaker fee.</p>
+		<p class="TWM2-p TWM2-p--note">FYI: Toyko WebGL Meetup is just a local meetup. Even if you are selected as a speaker, you don't get speaker fee.</p>
 
 		<div class="TWM2-buttonContainer">
 			<a class="TWM2-button" href="https://onedrive.live.com/redir?page=survey&amp;resid=774C71266B4ABD2!8319&amp;authkey=!ABX2X5qu9mMIIFU&amp;ithint=file%2cxlsx" target="_blank">SUBMIT</a>
@@ -160,33 +160,8 @@
 <!-- /.TWM2-pageFooter --></footer>
 
 
-<!-- <script src="./assets/js/lib.js"></script> -->
-<script src="assets/js/vendor/three.min.js"></script>
-<script src="assets/js/vendor/gentilis_bold.typeface.subset.min.js"></script>
-<script src="./assets/js/scripts.js"></script>
 <script src="//maps.google.com/maps/api/js?sensor=true"></script>
-<script >
-
-( function () {
-
-  var center = new google.maps.LatLng( 35.656681, 139.782140 );
-  var params = {
-    center: center,
-    zoom: 17,
-    draggable: false,
-    scrollwheel: false,
-    panControl: false,
-  };
-
-  var map = new google.maps.Map( document.getElementById( 'TWM2-map' ), params );
-
-  var marker = new google.maps.Marker( {
-    position: center,
-    map: map
-  } );
-
-} )();
-
-</script>
+<script src="./assets/js/lib.js"></script>
+<script src="./assets/js/scripts.js"></script>
 </body>
 </html>
