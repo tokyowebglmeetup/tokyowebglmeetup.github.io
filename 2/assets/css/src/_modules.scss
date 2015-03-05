@@ -24,6 +24,7 @@ $fontH: 'Oswald';
 $font: 'Raleway', '\6E38\30B4\30B7\30C3\30AF\4F53', 'Yu Gothic', YuGothic, '\30D2\30E9\30AE\30CE\89D2\30B4\20\50\72\6F\20\57\33', 'Hiragino Kaku Gothic Pro', '\30E1\30A4\30EA\30AA', Meiryo, '\FF2D\FF33\20\FF30\30B4\30B7\30C3\30AF', sans-serif;
 $fontJa : '\6E38\30B4\30B7\30C3\30AF\4F53', 'Yu Gothic', YuGothic, '\30D2\30E9\30AE\30CE\89D2\30B4\20\50\72\6F\20\57\33', 'Hiragino Kaku Gothic Pro', '\30E1\30A4\30EA\30AA', Meiryo, '\FF2D\FF33\20\FF30\30B4\30B7\30C3\30AF', sans-serif;
 $contentWidth: 1200px;
+$bp1: 640px;
 // $blockMargin1: 80px;
 // $blockMargin2: 40px;
 
@@ -95,6 +96,18 @@ p.TWM2-p--note{
   background: #990000;
 }
 
+@include max-screen( $bp1 ) {
+.TWM2-pageHeader__info{
+  font-size: 40px;
+  font-family: $fontH;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+  padding: 30px 0;
+  background: #990000;
+}
+}
+
 
 /* ==========================================================================
    section
@@ -135,7 +148,9 @@ p.TWM2-p--note{
     margin: 0;
   }
 }
-
+@include max-screen( $bp1 ) {
+  
+}
 /* ==========================================================================
    .TWM2-multiCol
    ========================================================================== */
@@ -151,6 +166,20 @@ p.TWM2-p--note{
 }
 .TWM2-multiCol__col{
   display: table-cell;
+}
+@include max-screen( $bp1 ) {
+.TWM2-multiCol{
+  margin: 0;
+  overflow: visible;
+}
+.TWM2-multiCol__inner{
+  border-spacing: 0;
+  display: block;
+  width: auto;
+}
+.TWM2-multiCol__col{
+  display: block;
+}
 }
 
 
@@ -169,19 +198,34 @@ p.TWM2-p--note{
 a.TWM2-button{
   color: #fff;
   text-decoration: none;
-  padding: 16px 20px;
-  min-width: 300px;
-  background: #900;
   display: inline-block;
+  min-width: 300px;
+  padding: 16px 20px;
+  background: #900;
   &.TWM2-button--disabled{
     cursor: auto;
     background: #666;
   }
 }
+@include max-screen( $bp1 ) {
+a.TWM2-button{
+  display: block;
+  min-width: 0;
+  &.TWM2-button--disabled{
+  }
+}
+}
 
+/* ==========================================================================
+   .TWM2-map
+   ========================================================================== */
 .TWM2-map{
   height: 600px;
   margin: 20px 20px -30px;
+  @include max-screen( $bp1 ) {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 /* ==========================================================================
@@ -203,22 +247,22 @@ a.TWM2-button{
   }
   img{
     display: block;
+    max-width: 100%;
+    height: auto;
   }
 }
 /* ==========================================================================
    TWM2-pageFooter
    ========================================================================== */
 .TWM2-pageFooter{
-  min-width: $contentWidth;
   background: #900;
 }
 .TWM2-pageFooter__inner{
   color: #FFF;
-  width: $contentWidth;
-  padding: 30px 0;
+  max-width: $contentWidth - 40;
+  padding: 30px 20px;
   margin: 0 auto;
 }
-
 /* ==========================================================================
    TWM2-organizers
    ========================================================================== */
@@ -260,7 +304,26 @@ a.TWM2-button{
           vertical-align: middle;
           display: table-cell;
         }
-            
+@include max-screen( $bp1 ) {
+.TWM2-organizers{}
+  .TWM2-organizers__heading{}
+  .TWM2-organizers__list{;
+    display: block;
+  }
+  .TWM2-organizers__listHead{}
+    .TWM2-organizers__listItem{
+      display: table;
+      margin-bottom: 10px;
+      a{
+      }
+    }
+        .TWM2-organizers__avator{
+          img{
+          }
+        }
+        .TWM2-organizers__name{
+        }
+}
 
 // /* ==========================================================================
    

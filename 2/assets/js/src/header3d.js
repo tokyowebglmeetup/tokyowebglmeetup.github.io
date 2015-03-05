@@ -5,7 +5,7 @@
   tokyo.header3d = {};
   var ns = tokyo.header3d;
 
-  var MIN_WIDTH = 1024;
+  var MIN_WIDTH = 320;
 
   ns.el = document.querySelector( '.TWM2-pageHeader__logo' );
   ns.width  = Math.max( MIN_WIDTH, window.innerWidth );
