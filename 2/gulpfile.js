@@ -45,7 +45,8 @@ gulp.task( 'sass', function () {
 gulp.task( 'scripts:js', function () {
 
   return gulp.src( [
-          'assets/js/src/header3d.js'
+          'assets/js/src/header3d.js',
+          'assets/js/src/gmap.js'
          ] )
          .pipe( plumber() )
          .pipe( concat( 'scripts.js' ) )
@@ -59,8 +60,8 @@ gulp.task( 'scripts:js', function () {
 gulp.task( 'scripts:lib', function () {
 
   return gulp.src( [
-          'assets/js/vendor/gentilis_bold.typeface.subset.min.js',
-          'assets/js/vendor/three.min.js'
+          'assets/js/vendor/three.min.js',
+          'assets/js/vendor/gentilis_bold.typeface.subset.min.js'
          ] )
          .pipe( plumber() )
          .pipe( concat( 'lib.js' ) )
