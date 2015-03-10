@@ -208,7 +208,7 @@ p.TWM2-p--note {
   margin: 0 auto; }
 
 .TWM2-pageHeader__info {
-  color: #fff;
+  color: #F6F6F6;
   font-size: 80px;
   font-family: 'Oswald';
   font-weight: bold;
@@ -249,7 +249,7 @@ p.TWM2-p--note {
 .TWM2-section__heading1 {
   margin: 0 0 24px; }
   .TWM2-section__heading1 h1 {
-    font-size: 40px;
+    font-size: 50px;
     font-family: 'Oswald';
     font-weight: bold;
     text-align: center;

@@ -61,6 +61,16 @@ gulp.task( 'scripts:lib', function () {
 
   return gulp.src( [
           'assets/js/vendor/three.min.js',
+
+          'assets/js/vendor/shaders/CopyShader.js',
+          'assets/js/vendor/shaders/BokehShader.js',
+
+          'assets/js/vendor/postprocessing/EffectComposer.js',
+          'assets/js/vendor/postprocessing/RenderPass.js',
+          'assets/js/vendor/postprocessing/ShaderPass.js',
+          'assets/js/vendor/postprocessing/MaskPass.js',
+          'assets/js/vendor/postprocessing/BokehPass.js',
+
           'assets/js/vendor/gentilis_bold.typeface.subset.min.js'
          ] )
          .pipe( plumber() )
