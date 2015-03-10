@@ -3,10 +3,11 @@
 
   'use strict';
 
-  var MIN_WIDTH = 320;
+  var MIN_WIDTH  = 320;
+  var MAX_HEIGHT = 250;
   var el = document.querySelector( '.TWM2-pageHeader__logo' );
-  var width  = Math.max( MIN_WIDTH, window.innerWidth );
-  var height = 250;
+  var width  = window.innerWidth;
+  var height = width / MAX_HEIGHT < 3 ? 120 : MAX_HEIGHT;
   var camera;
   var scene;
   var renderer;
@@ -28,11 +29,9 @@
 
     renderer = new THREE.WebGLRenderer( { antialias: true } );
     renderer.setSize( width, height );
-    renderer.setPixelRatio( window.devicePixelRatio );
+    // renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setClearColor( 0x01131D, 1 );
     renderer.autoClear = false;
-    renderer.shadowMapEnabled = true;
-    renderer.shadowMapSoft = true;
     el.removeChild( el.querySelector( 'img' ) );
     el.appendChild( renderer.domElement );
 
@@ -92,8 +91,14 @@
 
     if ( width != window.innerWidth ) {
 
-      width = Math.max( MIN_WIDTH, window.innerWidth );
+      width  = Math.max( MIN_WIDTH, window.innerWidth );
+      height = width / MAX_HEIGHT < 3 ? 120 : MAX_HEIGHT;
+
       renderer.setSize( width, height );
+
+      postprocessing.composer.setSize( width, height );
+      postprocessing.bokeh.uniforms[ 'aspect' ].value = camera.aspect;
+
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
 
