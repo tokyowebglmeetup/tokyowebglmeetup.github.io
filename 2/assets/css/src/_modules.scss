@@ -24,7 +24,7 @@ $fontH: 'Oswald';
 $font: 'Raleway', '\6E38\30B4\30B7\30C3\30AF\4F53', 'Yu Gothic', YuGothic, '\30D2\30E9\30AE\30CE\89D2\30B4\20\50\72\6F\20\57\33', 'Hiragino Kaku Gothic Pro', '\30E1\30A4\30EA\30AA', Meiryo, '\FF2D\FF33\20\FF30\30B4\30B7\30C3\30AF', sans-serif;
 $fontJa : '\6E38\30B4\30B7\30C3\30AF\4F53', 'Yu Gothic', YuGothic, '\30D2\30E9\30AE\30CE\89D2\30B4\20\50\72\6F\20\57\33', 'Hiragino Kaku Gothic Pro', '\30E1\30A4\30EA\30AA', Meiryo, '\FF2D\FF33\20\FF30\30B4\30B7\30C3\30AF', sans-serif;
 $contentWidth: 1200px;
-$bp1: 640px;
+$bp1: 840px - 1;
 // $blockMargin1: 80px;
 // $blockMargin2: 40px;
 
@@ -79,10 +79,15 @@ p.TWM2-p--note{
   margin-bottom: 20px;
 }
 .TWM2-pageHeader__logo{
-  img,
+  img{
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
   canvas{
     display: block;
-    margin: 0 auto;
+    margin: 0;
   }
 }
 .TWM2-pageHeader__info{
@@ -97,6 +102,9 @@ p.TWM2-p--note{
 }
 
 @include max-screen( $bp1 ) {
+.TWM2-pageHeader__logo{
+  height: auto;
+}
 .TWM2-pageHeader__info{
   font-size: 40px;
   font-family: $fontH;

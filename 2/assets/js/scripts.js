@@ -4,9 +4,9 @@
   'use strict';
 
   var MIN_WIDTH  = 320;
-  var MAX_HEIGHT = 250;
+  var MAX_HEIGHT = 280;
   var el = document.querySelector( '.TWM2-pageHeader__logo' );
-  var width  = window.innerWidth;
+  var width  = el.offsetWidth;
   var height = width / MAX_HEIGHT < 3 ? 120 : MAX_HEIGHT;
   var camera;
   var scene;
@@ -91,7 +91,7 @@
 
     if ( width != window.innerWidth ) {
 
-      width  = Math.max( MIN_WIDTH, window.innerWidth );
+      width  = Math.max( MIN_WIDTH, el.offsetWidth );
       height = width / MAX_HEIGHT < 3 ? 120 : MAX_HEIGHT;
 
       renderer.setSize( width, height );

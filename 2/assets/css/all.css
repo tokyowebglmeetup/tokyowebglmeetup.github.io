@@ -203,9 +203,14 @@ p.TWM2-p--note {
   background: #000;
   margin-bottom: 20px; }
 
-.TWM2-pageHeader__logo img, .TWM2-pageHeader__logo canvas {
+.TWM2-pageHeader__logo img {
   display: block;
+  width: 100%;
+  height: auto;
   margin: 0 auto; }
+.TWM2-pageHeader__logo canvas {
+  display: block;
+  margin: 0; }
 
 .TWM2-pageHeader__info {
   color: #F6F6F6;
@@ -217,7 +222,9 @@ p.TWM2-p--note {
   padding: 30px 0;
   background: #990000; }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 839px) {
+  .TWM2-pageHeader__logo {
+    height: auto; }
   .TWM2-pageHeader__info {
     font-size: 40px;
     font-family: 'Oswald';
@@ -276,7 +283,7 @@ p.TWM2-p--note {
 .TWM2-multiCol__col {
   display: table-cell; }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 839px) {
   .TWM2-multiCol {
     margin: 0;
     overflow: visible; }
@@ -308,7 +315,7 @@ a.TWM2-button {
     cursor: auto;
     background: #666; }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 839px) {
   a.TWM2-button {
     display: block;
     min-width: 0; } }
@@ -319,7 +326,7 @@ a.TWM2-button {
 .TWM2-map {
   height: 600px;
   margin: 20px 20px -30px; }
-  @media screen and (max-width: 640px) {
+  @media screen and (max-width: 839px) {
     .TWM2-map {
       margin-left: 0;
       margin-right: 0; } }
@@ -391,7 +398,7 @@ a.TWM2-button {
   vertical-align: middle;
   display: table-cell; }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 839px) {
   .TWM2-organizers__list {
     display: block; }
   .TWM2-organizers__listItem {
