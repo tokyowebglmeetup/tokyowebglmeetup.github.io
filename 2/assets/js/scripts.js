@@ -1,120 +1,110 @@
 
 ;( function () {
 
-  window.TWM2 = window.TWM2 || {};
-  TWM2.header3d = {};
-  var ns = TWM2.header3d;
+  'use strict';
 
   var MIN_WIDTH = 320;
+  var el = document.querySelector( '.TWM2-pageHeader__logo' );
+  var width  = Math.max( MIN_WIDTH, window.innerWidth );
+  var height = 250;
+  var camera;
+  var scene;
+  var renderer;
+  var postprocessing = {};
 
-  ns.el = document.querySelector( '.TWM2-pageHeader__logo' );
-  ns.width  = Math.max( MIN_WIDTH, window.innerWidth );
-  ns.height = 250;
-  ns.needUpdate = false;
-  ns.defaultCameraPosition = new THREE.Vector3( 0, 2, 20 );
+  var defaultCameraPosition = new THREE.Vector3( 0, 2, 20 );
 
-  var cubes;
+  var cubes, logo, text;
 
-  ns.init = function () {
+  var initScene = function () {
+
     var ambientLight,
         directionalLight;
 
-    ns.scene = new THREE.Scene();
-    ns.scene.fog = new THREE.FogExp2( 0x01131D, 0.06 );
+    scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2( 0x01131D, 0.06 );
 
-    ns.camera = new THREE.PerspectiveCamera( 40, ns.width / ns.height, 1, 100 );
-    // ns.camera.position = ns.defaultCameraPosition.clone();
-    onscroll()
+    camera = new THREE.PerspectiveCamera( 40, width / height, 1, 100 );
 
-    ns.renderer = new THREE.WebGLRenderer( { antialias: true } );
-    ns.renderer.setSize( ns.width, ns.height );
-    ns.renderer.setPixelRatio( window.devicePixelRatio );
-    ns.renderer.setClearColor( 0x01131D, 1 );
-    ns.renderer.autoClear = false;
-    ns.renderer.shadowMapEnabled = true;
-    ns.renderer.shadowMapSoft = true;
-    ns.el.removeChild( ns.el.querySelector( 'img' ) );
-    ns.el.appendChild( ns.renderer.domElement );
-
-    ns.postprocessing = {};
-initPostprocessing();
+    renderer = new THREE.WebGLRenderer( { antialias: true } );
+    renderer.setSize( width, height );
+    renderer.setPixelRatio( window.devicePixelRatio );
+    renderer.setClearColor( 0x01131D, 1 );
+    renderer.autoClear = false;
+    renderer.shadowMapEnabled = true;
+    renderer.shadowMapSoft = true;
+    el.removeChild( el.querySelector( 'img' ) );
+    el.appendChild( renderer.domElement );
 
     ambientLight = new THREE.AmbientLight( 0x666666 )
-    ns.scene.add( ambientLight );
+    scene.add( ambientLight );
 
     directionalLight = new THREE.DirectionalLight( 0xffffff );
     directionalLight.position.set( 0, 10, 20 );
     directionalLight.target.position.set( 0, 0, 0 );
-    // directionalLight.castShadow = true;
-    // directionalLight.shadowMapWidth = 512;
-    // directionalLight.shadowMapHeight = 512;
-    // directionalLight.shadowCameraNear = 1;
-    // directionalLight.shadowCameraFar = 30;
-    // directionalLight.shadowCameraLeft = -12;
-    // directionalLight.shadowCameraRight = 12;
-    // directionalLight.shadowCameraTop = 8;
-    // directionalLight.shadowCameraBottom = -8;
-    // directionalLight.shadowDarkness = .3;
-    // directionalLight.shadowCameraVisible = true;
-    ns.scene.add( directionalLight );
-
-    window.addEventListener( 'scroll', onscroll );
-
-    window.addEventListener( 'mousemove', function ( e ) {
-      var x = e.clientX / ns.width * 2 - 1;
-      ns.camera.position.x = x * 3;
-      ns.camera.position.z = - Math.abs( x * x );
-      ns.camera.lookAt(
-        new THREE.Vector3(
-          0,
-          ns.camera.position.y,
-          -10
-        )
-      )
-      ns.needUpdate = true;
-    } );
-  }
-
-  function onscroll () {
-
-    var scrollY = window.pageYOffset;
-    if ( ns.height < scrollY ) {
-      return;
-    }
-    ns.camera.position.y = ns.defaultCameraPosition.y - scrollY / 150;
-    ns.needUpdate = true;
+    scene.add( directionalLight );
 
   }
 
-  function initPostprocessing() {
+  var initPostprocessing = function () {
 
-    var renderPass = new THREE.RenderPass( ns.scene, ns.camera );
+    var composer = new THREE.EffectComposer( renderer );
 
-    var bokehPass = new THREE.BokehPass( ns.scene, ns.camera, {
+    var renderPass = new THREE.RenderPass( scene, camera );
+    var bokehPass = new THREE.BokehPass( scene, camera, {
       focus:    1.0,
       aperture: 0.025,
       maxblur:  1.0,
-
-      width: ns.width,
-      height: ns.height
+      width:    width,
+      height:   height
     } );
 
     bokehPass.renderToScreen = true;
 
-    var composer = new THREE.EffectComposer( ns.renderer );
-
     composer.addPass( renderPass );
     composer.addPass( bokehPass );
 
-    ns.postprocessing.composer = composer;
-    ns.postprocessing.bokeh = bokehPass;
+    postprocessing.composer = composer;
+    postprocessing.bokeh    = bokehPass;
 
   }
 
-  ns.renderLoop = function () {
+  var onscroll = function ( e ) {
 
-    requestAnimationFrame( ns.renderLoop );
-    ns.checkWindowConditions();
+    var scrollY = window.pageYOffset;
+    if ( height < scrollY ) {
+      return;
+    }
+    camera.position.y = defaultCameraPosition.y - scrollY / 150;
+
+  }
+
+  var onmousemove = function ( e ) {
+
+    var x = e.clientX / width * 2 - 1;
+    camera.position.x = x * 3;
+    camera.position.z = - Math.abs( x * x );
+    camera.lookAt( new THREE.Vector3( 0, camera.position.y, -10 ) );
+
+  }
+
+  var checkWindowConditions = function () {
+
+    if ( width != window.innerWidth ) {
+
+      width = Math.max( MIN_WIDTH, window.innerWidth );
+      renderer.setSize( width, height );
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+
+    }
+
+  };
+
+  var renderLoop = function () {
+
+    requestAnimationFrame( renderLoop );
+    checkWindowConditions();
 
     if ( !!cubes ) {
       cubes.rotation.x += 0.0003;
@@ -122,44 +112,16 @@ initPostprocessing();
       cubes.rotation.z += 0.0005;
     }
 
-    // if (
-    //   !ns.needUpdate ||
-    //   ns.height < window.pageYOffset
-    // ) {
-
-    //   return;
-
-    // }
-
-    ns.needUpdate = false;
-    // ns.renderer.render( ns.scene, ns.camera );
-    ns.postprocessing.composer.render( 0.1 ); //xxx
+    // renderer.render( scene, camera );
+    postprocessing.composer.render( 0.1 );
 
   };
 
-  ns.checkWindowConditions = function () {
-
-    if ( ns.width != window.innerWidth ) {
-
-      ns.width = Math.max( MIN_WIDTH, window.innerWidth );
-      ns.renderer.setSize( ns.width, ns.height );
-      ns.camera.aspect = ns.width / ns.height;
-      ns.camera.updateProjectionMatrix();
-      ns.needUpdate = true;
-
-    }
-
-  };
-
-  ns.Cubes = function () {
-
-    THREE.EventDispatcher.prototype.apply( this );
-    var that = this;
+  var addCubes = function () {
 
     var i = 0;
-    // var cubes;
     var mergedGeo = new THREE.Geometry();
-    var width  = 50;
+    var width = 50;
     var cubeSize = 1;
     var matrix = new THREE.Matrix4();
     var geometry;
@@ -184,17 +146,17 @@ initPostprocessing();
 
     cubes = new THREE.Mesh( mergedGeo, material );
     
-    ns.scene.add( cubes );
-    ns.needUpdate = true;
+    scene.add( cubes );
 
   };
 
-  ns.Logo = function () {
-    // THREE.EventDispatcher.prototype.apply( this );
-    var that = this;
+  var addLogo = function () {
+
+    var logo;
     var loader = new THREE.JSONLoader();
+
     loader.load( './assets/models/logo/webgl.js', function( geometry, materials ) {
-      console.log( geometry, materials );
+
       materials[ 0 ] = new THREE.MeshPhongMaterial( {
         color: 0xa90000,
         specular: 0xffffff,
@@ -202,26 +164,23 @@ initPostprocessing();
         shininess: 100,
         ambient: 0x000000
       } );
-      that.mesh = new THREE.Mesh(
+
+      logo = new THREE.Mesh(
         geometry,
         new THREE.MeshFaceMaterial( materials )
       );
-      // that.mesh.traverse( function ( child ) {
-      //   child.castShadow = true;
-      //   child.receiveShadow = false;
-      // } );
-      that.mesh.rotation.x = THREE.Math.degToRad( 90 );
-      that.mesh.position.set( -4, 1.5, -8 );
-      that.mesh.scale.set( 3, 3, 3 );
-      // that.dispatchEvent( { type: 'loaded' } );
-      ns.scene.add( that.mesh );
-      ns.needUpdate = true;
+
+      logo.rotation.x = THREE.Math.degToRad( 90 );
+      logo.position.set( -4, 1.5, -8 );
+      logo.scale.set( 3, 3, 3 );
+      scene.add( logo );
+
     } );
+
   };
 
-  ns.Text = function ( text ) {
+  var addText = function ( text ) {
 
-    THREE.EventDispatcher.prototype.apply( this );
     var i, l,
         ii, ll,
         text = text,
@@ -283,30 +242,27 @@ initPostprocessing();
 
     geometry.computeBoundingBox();
     geometry.computeVertexNormals();
-    this.mesh = new THREE.Mesh( geometry, new THREE.MeshFaceMaterial( materials ) );
+    mesh = new THREE.Mesh( geometry, new THREE.MeshFaceMaterial( materials ) );
 
-    this.mesh.traverse( function ( child ) {
-
-      child.castShadow = true;
-      child.receiveShadow = false;
-
-    } );
-
-    this.mesh.position.y = -geometryTemporary.boundingBox.max.y / 2;
-    this.mesh.scale.set( 3, 3, 3 );
-    this.mesh.position.set( 0, .2, -8 );
-    // this.dispatchEvent( { type: 'loaded' } );
-    ns.scene.add( this.mesh );
-    ns.needUpdate = true;
+    mesh.position.y = -geometryTemporary.boundingBox.max.y / 2;
+    mesh.scale.set( 3, 3, 3 );
+    mesh.position.set( 0, .2, -8 );
+    scene.add( mesh );
 
   };
 
+  initScene()
+  initPostprocessing();
+  onscroll();
 
-  TWM2.header3d.init();
-  TWM2.header3d.renderLoop();
-  _cubes = new TWM2.header3d.Cubes();
-  var logo = new TWM2.header3d.Logo();
-  var text = new TWM2.header3d.Text( [ 'MEETUP', 'TOKYO' ] );
+  addCubes();
+  addLogo();
+  addText( [ 'MEETUP', 'TOKYO' ] );
+
+  renderLoop();
+
+  window.addEventListener( 'scroll', onscroll );
+  window.addEventListener( 'mousemove', onmousemove );
 
 } )();
 
