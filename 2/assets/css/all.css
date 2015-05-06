@@ -196,6 +196,9 @@ p.TWM2-p--en {
 p.TWM2-p--note {
   font-size: 12px; }
 
+p.TWM2-p--alignCenter {
+  text-align: center; }
+
 /* ==========================================================================
    pageHeader
    ========================================================================== */
@@ -266,6 +269,16 @@ p.TWM2-p--note {
   margin-bottom: 20px; }
   .TWM2-section__heading2 h2 {
     margin: 0; }
+
+/* ==========================================================================
+   .TWM2-shortParagraph
+   ========================================================================== */
+.TWM2-shortParagraph {
+  text-align: center; }
+
+.TWM2-shortParagraph__content {
+  display: inline-block;
+  text-align: left; }
 
 /* ==========================================================================
    .TWM2-multiCol
