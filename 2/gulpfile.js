@@ -76,6 +76,7 @@ gulp.task( 'scripts:js', function () {
 
   return gulp.src( [
           'assets/js/src/header3d.js',
+          'assets/js/src/ui.js',
           'assets/js/src/gmap.js'
          ] )
          .pipe( plumber() )

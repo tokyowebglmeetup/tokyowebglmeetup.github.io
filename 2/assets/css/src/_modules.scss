@@ -360,6 +360,7 @@ a.TWM2-button{
 }
 .TWM2-schedule__row{
   display: table;
+  width: 100%;
   margin-bottom: 80px;
   &:first-child{}
   &:last-child{
@@ -416,20 +417,17 @@ a.TWM2-button{
     .TWM2-speaker__avatar{
       vertical-align: top;
       display: table-cell;
-      width: 80px;
-      height: 80px;
+      padding-right: 20px;
       img{
         display: block;
-        width: 100%;
-        height: auto;
+        width: 80px;
+        height: 80px;
         border-radius: 3px;
       }
     }
     .TWM2-speaker__info{
       vertical-align: middle;
       display: table-cell;
-      padding-left: 20px;
-      
     }
       .TWM2-speaker__name{
         font-weight: bold;
