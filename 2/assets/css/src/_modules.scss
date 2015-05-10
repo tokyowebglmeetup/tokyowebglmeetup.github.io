@@ -348,10 +348,126 @@ a.TWM2-button{
         }
 }
 
-// /* ==========================================================================
-   
-//    ========================================================================== */
 
+
+/* ==========================================================================
+   TWM2-talk__title
+   ========================================================================== */
+
+.TWM2-schedule{
+  padding: 0 20px;
+  background: url( ../img/TWM2-schedule__time/line.svg ) repeat-y 80px 0;
+}
+.TWM2-schedule__row{
+  display: table;
+  margin-bottom: 80px;
+  &:first-child{}
+  &:last-child{
+    margin-bottom: 0;
+  }
+}
+.TWM2-schedule__time{
+  display: table-cell;
+  vertical-align: top;
+  width: 50px;
+  padding-right: 30px;
+  background: url( ../img/TWM2-schedule__time/circle.svg ) no-repeat 100% 0.3em;
+}
+.TWM2-schedule__content{
+  display: table-cell;
+  vertical-align: top;
+  padding-left: 20px;
+}
+
+
+
+
+
+
+
+.TWM2-talk{
+}
+  .TWM2-time{
+  }
+  .TWM2-talk__title{
+    color: #009688;
+    line-height: 1.4;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .TWM2-talk__summary{
+    font-size: 14px;
+  }
+  .TWM2-talk__speaker{
+    margin-top: 10px;
+  }
+/* ==========================================================================
+   .TWM2-speaker
+   ========================================================================== */
+.TWM2-speakerGroup{
+  // text-align: center;
+}
+
+.TWM2-speaker{}
+
+  .TWM2-speaker__tldr{
+    display: table;
+  }
+    .TWM2-speaker__avatar{
+      vertical-align: top;
+      display: table-cell;
+      width: 80px;
+      height: 80px;
+      img{
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 3px;
+      }
+    }
+    .TWM2-speaker__info{
+      vertical-align: middle;
+      display: table-cell;
+      padding-left: 20px;
+      
+    }
+      .TWM2-speaker__name{
+        font-weight: bold;
+      }
+      .TWM2-speaker__social{
+        font-size: 0;
+        margin-top: 6px;
+        a{
+          text-decoration: none;
+        }
+        [class^="TWM2-icon-"]{
+          font-size: 32px;
+          margin-right: 8px;
+        }
+        .TWM2-icon-github{
+          color: #000;
+        }
+        .TWM2-icon-twitter{
+          color: #00B5F1;
+        }
+      }
+  .TWM2-speaker__details{
+    margin-top: 10px;
+  }
+  .TWM2-speaker__detailExpander{
+    text-align: center;
+    cursor: pointer;
+    background: #E0E0E0;
+    &:before{
+      @include icon( expand );
+      font-size: 40px;
+      line-height: 20px;
+    }
+  }
+    .TWM2-speaker__bio{
+      font-size: 12px;
+      display: none;
+    }
 // /* ==========================================================================
    
 //    ========================================================================== */

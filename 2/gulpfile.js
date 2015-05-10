@@ -9,6 +9,10 @@ var runSequence  = require( 'run-sequence' );
 // var exec         = require( 'child_process' ).exec;
 
 var gulp         = require( 'gulp' );
+
+var iconfont     = require( 'gulp-iconfont' );
+var consolidate  = require( 'gulp-consolidate' );
+
 var autoprefixer = require( 'gulp-autoprefixer' );
 var concat       = require( 'gulp-concat' );
 var minifyCSS    = require( 'gulp-minify-css' );
@@ -28,6 +32,32 @@ var autoprefixerBrowsers = [
 var root = path.resolve( __dirname, '../' );
 
 // ---
+gulp.task( 'iconfont', function () {
+  
+  var fontName = 'icon';
+
+  return gulp.src( [ './assets/icon/src/*.svg' ] )
+  .pipe( iconfont( {
+    fontName: fontName,
+    appendCodepoints: true
+  } ) )
+  .on( 'codepoints', function( codepoints, options ) {
+ 
+    // CSS templating, e.g.
+    gulp.src( './assets/icon/src/_icon.scss' )
+    .pipe( consolidate( 'underscore', {
+      glyphs: codepoints,
+      fontName: fontName,
+      fontPath: '../fonts/',
+      prefix: 'TWM2-icon'
+    } ) )
+    .pipe( gulp.dest( './assets/css/src/' ) );
+ 
+  } )
+  .pipe( gulp.dest( './assets/fonts/' ) );
+ 
+} );
+
 
 gulp.task( 'sass', function () {
 
@@ -102,7 +132,7 @@ gulp.task( 'watch', function() {
 gulp.task( 'build', function( callback ) {
 
   runSequence(
-    [ 'sass', 'scripts:js', 'scripts:lib' ],
+    'iconfont', [ 'sass', 'scripts:js', 'scripts:lib' ],
     callback
   );
 
