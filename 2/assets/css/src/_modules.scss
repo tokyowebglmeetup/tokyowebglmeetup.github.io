@@ -355,16 +355,18 @@ a.TWM2-button{
    ========================================================================== */
 
 .TWM2-schedule{
-  padding: 0 20px;
+  padding: 1px 20px;
   background: url( ../img/TWM2-schedule__time/line.svg ) repeat-y 80px 0;
 }
 .TWM2-schedule__row{
   display: table;
   width: 100%;
   margin-bottom: 80px;
-  &:first-child{}
+  &:first-child{
+    margin-top: -10px;
+  }
   &:last-child{
-    margin-bottom: 0;
+    margin-bottom: -10px;
   }
 }
 .TWM2-schedule__time{
