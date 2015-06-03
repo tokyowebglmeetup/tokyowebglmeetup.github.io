@@ -103,6 +103,20 @@ p.TWM2-p--alignCenter{
   padding: 30px 0;
   background: #990000;
 }
+.TWM2-pageHeader__hashtag{
+  color: #F6F6F6;
+  font-size: 20px;
+  font-family: $fontH;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: -30px;
+  background: #990000;
+  a{
+    color: #FFF;
+  }
+}
 
 @include max-screen( $bp1 ) {
 .TWM2-pageHeader__logo{
